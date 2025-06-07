@@ -31,6 +31,8 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
       controller: widget.controller,
       obscureText: !showPassword,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
         border: OutlineInputBorder(
@@ -47,8 +49,9 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
             setState(() {});
           },
           child: showPassword == true
-              ? Icon(Icons.remove_red_eye, color: Colors.brown.withOpacity(0.8))
-              : const Icon(Icons.remove_red_eye_outlined, color: Colors.green),
+              ? Icon(Icons.remove_red_eye, color: Colors.green)
+              : const Icon(Icons.remove_red_eye_outlined,
+                  color: Color(0xFFBDC65B)),
         ),
       ),
       textInputAction: widget.textInputAction,
