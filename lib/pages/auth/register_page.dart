@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return 'Vui lòng nhập xác nhận mật khẩu';
   }
 
-  // Validate email formatMinh
+  // Validate email formatMinhminh123@
   String emailPattern = r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$';
   String email = emailController.text.trim();
   if (!RegExp(emailPattern).hasMatch(email)) {

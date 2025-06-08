@@ -76,33 +76,28 @@ class _ChangePasswordState extends State<ChangePassword> {
       return;
     }
 
-    if (newPassword.length < 6) {
-      _showMessage("❌ Mật khẩu mới phải có ít nhất 6 ký tự!");
-      return;
-    }
-    if (newPassword != confirmPassword) {
-      _showMessage("❌ Mật khẩu mới không khớp!");
-      return;
-    }
-
-    String? password = newPasswordController?.text.trim();
-    if (password!.length <= 6) {
+    if (newPassword.length <= 6) {
       _showMessage('Mật khẩu phải có nhiều hơn 6 ký tự');
       return;
     }
-    if (!RegExp(r'[A-Z]').hasMatch(password)) {
+    if (!RegExp(r'[A-Z]').hasMatch(newPassword)) {
       _showMessage('Mật khẩu phải chứa ít nhất 1 chữ in hoa');
       return;
     }
-    if (!RegExp(r'[0-9]').hasMatch(password)) {
+    if (!RegExp(r'[0-9]').hasMatch(newPassword)) {
       _showMessage('Mật khẩu phải chứa ít nhất 1 số');
       return;
     }
 
-    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password)) {
+    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(newPassword)) {
       _showMessage('Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt');
       return;
     }
+
+    if (newPassword != confirmPasswordController) {
+      _showMessage("❌ Mật khẩu xác nhận không khớp!");
+      return;
+  }
 
     user.password = newPassword;
     await sharedPrefs!.saveUser(user);

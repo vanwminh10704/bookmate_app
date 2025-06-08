@@ -8,12 +8,10 @@ class BookItem extends StatelessWidget {
     required this.isFavorite,
     this.onAdd,
     this.onDelete,
-    this.showDelete = true,
   });
 
   final BookModel book;
   final bool isFavorite;
-  final bool showDelete;
   final Function()? onAdd;
   final Function()? onDelete;
 
@@ -103,26 +101,24 @@ class BookItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      if (showDelete) ...[
-                        const SizedBox(width: 10.0),
-                        GestureDetector(
-                          onTap: onDelete,
-                          child: Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.black, width: 1),
-                            ),
-                            child: const Icon(
-                              Icons.delete,
-                              size: 18,
-                              color: Colors.black,
-                            ),
+                      const SizedBox(width: 10.0),
+                      GestureDetector(
+                        onTap: onDelete,
+                        child: Container(
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.black, width: 1),
+                          ),
+                          child: const Icon(
+                            Icons.delete,
+                            size: 18,
+                            color: Colors.black,
                           ),
                         ),
-                      ],
+                      ),
                     ],
                   ),
                 ],
