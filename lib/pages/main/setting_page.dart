@@ -3,6 +3,7 @@ import '../auth/login_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:book_flutter/components/app_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:book_flutter/pages/auth/change_password.dart';
 import '../../services/shared_prefs.dart'; // Import file SharedPrefs của bạn
@@ -171,7 +172,20 @@ class _SettingPageState extends State<SettingPage> {
                           "Đăng xuất",
                           style: TextStyle(color: Colors.red),
                         ),
-                        onTap: _logout, // Sử dụng hàm _logout đã sửa
+                        onTap: () {
+                          AppDialog.dialog(
+                            title: const Text(
+                              "Xác nhận đăng xuất",
+                              style: TextStyle(
+                                  fontSize: 22.0, fontWeight: FontWeight.w300),
+                              textAlign: TextAlign.center,
+                            ),
+                            context,
+                            content: "Bạn có chắc chắn muốn đăng xuất không?",
+                            confirmText: "Đăng xuất",
+                            action: () async => await _logout(),
+                          );
+                        }, // Sử dụng hàm _logout đã sửa
                       ),
                     ),
                   ],
